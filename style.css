@@ -34,7 +34,6 @@ body {
   border: 2px solid black;
   border-radius: 50%;
   font-size: 24px;
-  padding-left: 4px;
   transition: all 300ms ease-in;
 }
 .up__btn:hover {
@@ -47,6 +46,7 @@ body {
   font-size: 32px;
   margin-top: 8px;
   background-color: white;
+  visibility: hidden;
 }
 .counter {
   width: 50px;
@@ -57,6 +57,7 @@ body {
   margin-top: 8px;
   background-color: darksalmon;
   color: white;
+  visibility: hidden;
 }
 
 
