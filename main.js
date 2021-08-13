@@ -6,7 +6,7 @@ const field = document.querySelector('.dowen');
 const fieldRect = field.getBoundingClientRect();
 const btn = document.querySelector('.up__btn');
 const timer = document.querySelector('.timer');
-const score = document.querySelector('.counter')
+const score = document.querySelector('.counter');
 
 
 function initGame() {
