@@ -1,7 +1,6 @@
 'use strict';
+import * as sound from './sound.js';
 
-const carrotSound = new Audio('./sound/carrot_pull.mp3');
-const bugSound = new Audio('./sound/bug_pull.mp3');
 const carrot_size = 80;
 
 export default class dowen {
@@ -24,7 +23,7 @@ export default class dowen {
   }
 
 
-  _addItem(className, count, imgPath) {
+  addItem(className, count, imgPath) {
     const x1 = 0;
     const y1 = 0;
     const x2 = this.fieldRect.width - carrot_size;
@@ -42,23 +41,18 @@ export default class dowen {
     }
   };
 
-  onClick(event) {
+  onClick = event => {
     const target = event.target;
     if(target.matches('.carrot')) {
       target.remove();
-      playSound(carrotSound);
+      sound.playCarrot();
       this.onItemClick && this.onItemClick('carrot');
     } else if(target.matches('.bug')) {
       this.onItemClick && this.onItemClick('bug');
-      playSound(bugSound);
+      sound.playbug();
     }
   }
 }
-
-function playSound(sound) {
-  sound.currentTime = 0;
-  sound.play();
-  }
 
 function randomNumber(min, max) {
   return Math.random() * (max - min) + min;
