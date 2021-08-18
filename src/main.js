@@ -1,25 +1,32 @@
 'use strict';
 import PopUp from './popup.js';
-import Game from './game.js';
-
+import { GameBuilder, Reason } from './game.js';
+import * as sound from './sound.js';
 
 const gameFinishBanner = new PopUp();
 
-const game = new Game(3, 2, 2);
+const game = new GameBuilder()
+.withGameDuration(3)
+.withCarrotCount(2)
+.withBugCount(2)
+.build();
+
 game.setGameStopListner((reason) => {
-  console.log(reason);
   let message;
   switch(reason) {
-    case 'cancel':
+    case Reason.cancle:
       message = 'REPLAY?';
+      sound.playalert();
       break;
-    case 'win':
+    case Reason.win:
       message = 'YOU WIN';
+      sound.playwin();
       break;
-    case 'lose':
+    case Reason.lose:
       message = 'YOU LOST';
+      sound.playbug();
       break;
-      default:
+    default:
         throw new Error('not valid reason');
   }
   gameFinishBanner.show(message);
